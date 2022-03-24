@@ -3,9 +3,7 @@ RUN apt-get -y update && apt-get -y upgrade \
     && apt-get -y install openjdk-8-jdk wget
 RUN mkdir /usr/local/tomcat
 RUN apt install wget -y
-RUN wget http://apachemirror.wuchna.com/tomcat/tomcat-8/v8.5.46/bin/apache-tomcat-8.5.46.tar.gz -O /tmp/tomcat.tar.gz
-RUN cd /tmp && tar xvfz tomcat.tar.gz \
-    && cp -Rv /tmp/apache-tomcat-8.5.46/* /usr/local/tomcat/
-COPY target/maven-web-application.war /usr/local/tomcat/webapps
+RUN wget https://downloads.apache.org/tomcat/tomcat-9/v9.0.60/bin/apache-tomcat-9.0.60.tar.gz.sha512
+RUN cd /tmp && tar xvfz tomcat-9.0.60.tar.gz \
 EXPOSE 8080
 CMD ["/usr/local/tomcat/bin/startup.sh"."run"]
